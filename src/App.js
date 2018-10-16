@@ -1,26 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Loading from "./components/Loading";
 
 class App extends Component {
+  state = {
+      compteur:0,
+    loading:true,
+      data:[]
+  };
+
+  componentDidMount(){
+      setTimeout(() => {
+          this.setState({loading:false})
+      },10000)
+
+  }
+
+
   render() {
+      if (this.state.loading) {
+          return(
+              <div>
+                  <Loading/>
+              </div>
+
+          )
+      }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div className="App">
+            <h4>bonjour</h4>
+        </div>
+
     );
   }
 }
